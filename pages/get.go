@@ -9,39 +9,32 @@ import (
 
 var slides = []*components.Slide{
 	{
-		Title:       "Website",
-		SubTitle:    "",
-		Description: "It is hosted on BunnyCDN. It has a perfect score on the lighthouse test.",
-		ImgSrc:      "/assets/images/lighthouse.png",
-		ImgWidth:    "100%",
-	},
-	{
-		Title:       "rust-embed",
+		Title:       "Rust-embed",
+		Link:        "https://github.com/pyros2097/rust-embed",
 		SubTitle:    "A rust macro which loads files into the rust binary at compile time during release and loads the file from the fs during dev.",
 		Description: "You can use this to embed your css, js and images into a single executable which can be deployed to your servers. Also it makes it easy to build a very small docker image for you to deploy.",
 		ImgSrc:      "/assets/images/rust-embed.png",
-		ImgWidth:    "100%",
 	},
 	{
-		Title:       "wapp",
-		SubTitle:    "wapp is a framework to build isomorphic web apps in golang.",
-		Description: "It uses a declarative syntax using funcs that allows creating and dealing with HTML elements only by using Go, and without writing any HTML markup. The syntax is inspired by react and its awesome hooks and functional component features. It is highly opioninated and integrates very well with tailwind css for now.",
-		ImgSrc:      "/assets/images/rust-embed.png",
-		ImgWidth:    "100%",
+		Title:       "Gromer",
+		Link:        "https://github.com/pyros2097/gromer",
+		SubTitle:    "Gromer is a framework and cli to build web apps in golang.\nIt uses a declarative syntax using inline handlebar templates for components and pages.",
+		Description: "It also generates http handlers for your routes which follow a particular folder structure. Similar to other frameworks like nextjs, sveltekit. These handlers are also normal functions and can be imported in other packages to call them directly.",
+		ImgSrc:      "/assets/images/gromer.png",
 	},
 	{
 		Title:       "Pine",
+		Link:        "https://github.com/pyros2097/pine",
 		SubTitle:    "A programming language with a syntax largely inspired by nim but with the simplicity of go. It has jsx support in built by default.",
 		Description: "first class functions clean syntax basics: int, float, bool, byte, enum references: string, array, map, nil, error functions: extern, proc, method, test conditions: if, elif, else, match, break, continue loops: for inbuilt: echo, assert",
 		ImgSrc:      "/assets/images/pine.png",
-		ImgWidth:    "40%",
 	},
 	{
 		Title:       "Gdx Studio",
-		SubTitle:    "GdxStudio is used for creating awesome games using libGdx.",
-		Description: "It has all the features of libgdx built-in so you can easily,start creating games with it. Automatic Asset Loading including Atlas, TextureRegions, BitmapFonts, Music, Sound. Tools like Font Editor, Particle Editor, Texture Packer, SceneEditor, MapEditor, ActorEditor, ImagingTools are already built into it.",
+		Link:        "https://github.com/pyros2097/gdx-studio",
+		SubTitle:    "GdxStudio is used for creating awesome games using libGDX.",
+		Description: "It has all the features of libGDX built-in so you can easily,start creating games with it. Automatic Asset Loading including Atlas, TextureRegions, BitmapFonts, Music, Sound. Tools like Font Editor, Particle Editor, Texture Packer, SceneEditor, MapEditor, ActorEditor, ImagingTools are already built into it.",
 		ImgSrc:      "/assets/images/gdx-studio.png",
-		ImgWidth:    "100%",
 	},
 }
 

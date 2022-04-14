@@ -12,7 +12,9 @@ import (
 	"pyros.sh/assets"
 	"pyros.sh/components"
 	"pyros.sh/pages"
+	"pyros.sh/pages/404"
 	"pyros.sh/pages/blog"
+	"pyros.sh/pages/blog/_id_"
 	"pyros.sh/pages/ref"
 	"pyros.sh/pages/work"
 	
@@ -20,6 +22,7 @@ import (
 
 func init() {
 	gromer.RegisterComponent(components.Header)
+	gromer.RegisterComponent(components.Layout)
 	gromer.RegisterComponent(components.Page)
 	gromer.RegisterComponent(components.Slider)
 	
@@ -34,7 +37,9 @@ func main() {
 	gromer.Static(r, "/assets/", assets.FS)
 	gromer.Handle(r, "GET", "/api", gromer.ApiExplorer)
 	gromer.Handle(r, "GET", "/", pages.GET)
+	gromer.Handle(r, "GET", "/404", not_found.GET)
 	gromer.Handle(r, "GET", "/blog", blog.GET)
+	gromer.Handle(r, "GET", "/blog/{id}", blog_id_.GET)
 	gromer.Handle(r, "GET", "/ref", ref.GET)
 	gromer.Handle(r, "GET", "/work", work.GET)
 	

@@ -2,11 +2,38 @@ package blog
 
 import (
 	"context"
+	"sort"
+	"strings"
 
 	. "github.com/pyros2097/gromer/handlebars"
+
+	"pyros.sh/assets"
 )
 
+type Post struct {
+	ID    string `json:"id"`
+	Title string `json:"title"`
+	Date  string `json:"date"`
+}
+
 func GET(c context.Context) (HtmlContent, int, error) {
+	files, err := assets.FS.ReadDir("md")
+	if err != nil {
+		return HtmlErr(500, err)
+	}
+	posts := []*Post{}
+	for _, f := range files {
+		title := f.Name()[11 : len(f.Name())-3]
+		id := strings.ReplaceAll(title, " ", "-")
+		posts = append(posts, &Post{
+			ID:    id,
+			Title: title,
+			Date:  f.Name()[0:10],
+		})
+	}
+	sort.Slice(posts, func(i, j int) bool {
+		return posts[i].Date > posts[j].Date
+	})
 	return Html(`
 		{{#Page title="Blog"}}
 			{{#Header}}{{/Header}}
@@ -15,26 +42,24 @@ func GET(c context.Context) (HtmlContent, int, error) {
 					<div class="flex flex-row flex-1 items-center max-w-5xl text-lg font-source p-4 mt-4">
 						<div class="flex flex-1 flex-col">
 							<div class="flex flex-1 flex-col">
-								${data.blog
-									.sort((a, b) => (b.uploadedOn > a.uploadedOn ? -1 : 1))
-									.map(
-										(item) => html
-											<div class="flex flex-1 flex-row mt-2">
-												<div class="flex-1">
-													<div>
-														▪
-														<a class="ml-2 border-b border-black" href="${item.permaLink}"> ${item.title} </a>
-													</div>
-												</div>
-												<div class="">${item.uploadedOn}</div>
+								{{#each posts as |post| }}
+									<div class="flex flex-1 flex-row mt-2">
+										<div class="flex-1">
+											<div>
+												▪
+												<a class="ml-2 border-b border-black" href="/blog/{{ post.ID }}"> {{ post.Title }} </a>
 											</div>
-										,
-									)}
+										</div>
+										<div class="">{{ post.Date }}</div>
+									</div>
+								{{/each}}
 							</div>
 						</div>
 					</div>
 				</div>
 			</main>
 		{{/Page}}
-		`).Render()
+		`).
+		Prop("posts", posts).
+		Render()
 }

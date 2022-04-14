@@ -1,17 +1,59 @@
 package blog_id_
 
 import (
+	"bytes"
 	"context"
+	"fmt"
+	"html/template"
+	"strings"
 
 	. "github.com/pyros2097/gromer/handlebars"
+	"github.com/yuin/goldmark"
+	highlighting "github.com/yuin/goldmark-highlighting"
+	"pyros.sh/assets"
 )
 
-func GET(c context.Context) (HtmlContent, int, error) {
-	return Html(`
-		{{#Page title="Blog"}}
-			{{#Header}}{{/Header}}
-		{{/Page}}
-		`).Render()
+var markdown = goldmark.New(
+	goldmark.WithExtensions(
+		highlighting.NewHighlighting(
+			highlighting.WithStyle("dracula"),
+		),
+	),
+)
+
+func GET(c context.Context, id string) (HtmlContent, int, error) {
+	files, err := assets.FS.ReadDir("md")
+	if err != nil {
+		return HtmlErr(500, err)
+	}
+	for _, f := range files {
+		title := f.Name()[11 : len(f.Name())-3]
+		postId := strings.ReplaceAll(title, " ", "-")
+		if postId == id {
+			source, err := assets.FS.ReadFile("md/" + f.Name())
+			if err != nil {
+				return HtmlErr(500, err)
+			}
+			var buf bytes.Buffer
+			if err := markdown.Convert(source, &buf); err != nil {
+				return HtmlErr(500, err)
+			}
+			return Html(`
+				{{#Page title="Blog"}}
+					{{#Header}}{{/Header}}
+					{{#Layout}}
+						<div class="block">
+							{{ md }}
+						</div>
+					{{/Layout}}	
+					</main>
+				{{/Page}}
+			`).
+				Prop("md", template.HTML(buf.String())).
+				Render()
+		}
+	}
+	return HtmlErr(404, fmt.Errorf("Post not found"))
 }
 
 // export const head = ({ config, item }) => {
@@ -49,13 +91,7 @@ func GET(c context.Context) (HtmlContent, int, error) {
 //                 ${item.description.map((text) => {
 //                   if (text) {
 //                     if (text.code) {
-//                       const codeblock = hljs.highlight(text.code, { language: text.language });
 //                       // bg-codebg font-monospace text-sm rounded-md py-1 px-4 my-3 mr-4
-//                       return html`<pre>
-//                         <code class="language-${text.language} hljs font-mono text-xs rounded-3xl">
-//                           ${unsafeHTML(codeblock.value)}
-//                         </code>
-//                       </pre>`;
 //                     }
 //                     if (text.img) {
 //                       return html`<div class="my-6"><img src="${text.img}" alt="${text.img}" /></div>`;

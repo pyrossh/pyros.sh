@@ -6,14 +6,17 @@ require (
 	github.com/gorilla/mux v1.8.0
 	github.com/pyros2097/gromer v0.15.0
 	github.com/rs/zerolog v1.26.1
+	github.com/yuin/goldmark v1.4.11
+	github.com/yuin/goldmark-highlighting v0.0.0-20220208100518-594be1970594
 	gocloud.dev v0.25.0
 )
 
 require (
-	cloud.google.com/go v0.100.2 // indirect
 	cloud.google.com/go/compute v1.5.0 // indirect
 	cloud.google.com/go/firestore v1.6.1 // indirect
+	github.com/alecthomas/chroma v0.10.0 // indirect
 	github.com/aymerick/raymond v2.0.2+incompatible // indirect
+	github.com/dlclark/regexp2 v1.4.0 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
 	github.com/go-playground/validator/v10 v10.10.1 // indirect
