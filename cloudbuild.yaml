@@ -7,9 +7,12 @@ steps:
     args:
       - 'run'
       - 'deploy'
-      - 'pyros.sh'
+      - 'pyros-sh'
       - '--region=asia-south1'
       - '--platform=managed'
       - '--allow-unauthenticated'
-      - '--service-account=peter.john@pyros.sh'
       - '--image=gcr.io/${PROJECT_ID}/pyros.sh:$SHORT_SHA'
+images:
+  - gcr.io/${PROJECT_ID}/pyros.sh:$SHORT_SHA
+options:
+  logging: CLOUD_LOGGING_ONLY
