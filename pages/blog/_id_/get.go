@@ -45,7 +45,7 @@ func GET(c context.Context, id string) (HtmlContent, int, error) {
 						<div class="block">
 							{{ md }}
 						</div>
-					{{/Layout}}	
+					{{/Layout}}
 					</main>
 				{{/Page}}
 			`).

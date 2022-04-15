@@ -11,7 +11,7 @@ run:
 	gow run main.go
 
 css:
-	tailwindcss -i ./assets/css/config.css -o ./assets/css/styles.css --watch
+	tailwindcss -i ./assets/css/config.css -o ./assets/css/tw.css --watch
 
 docker-build:
 	docker build -t pyros.sh:latest .

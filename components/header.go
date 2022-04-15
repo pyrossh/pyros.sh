@@ -8,17 +8,15 @@ func Header() *Template {
 	return Html(`
 		<header>
       <nav>
-        <div class="w-full flex flex-1 flex-row justify-center bg-newblack">
-          <div class="flex flex-row flex-1 items-center max-w-5xl font-monospace text-white p-3">
-            <a class="flex text-newyellow text-xl sm:text-2xl pl-1 pr-4" href="/"> pyros.sh </a>
+          <div class="flex flex-row flex-1 items-center max-w-5xl text-white p-3">
+            <a class="logo" href="/"> pyros.sh </a>
             <div class="flex flex-row flex-1 items-center text-base sm:text-lg">
-              <a class="px-2 mx-1 hover:bg-gray-700" href="/work"> work </a>
+              <a class="nav-link" href="/work"> work </a>
               <div class="text-lg">|</div>
-              <a class="px-2 mx-1 hover:bg-gray-700" href="/ref"> ref </a>
+              <a class="nav-link" href="/ref"> ref </a>
               <div class="text-lg">|</div>
-              <a class="px-2 mx-1 hover:bg-gray-700" href="/blog"> blog </a>
+              <a class="nav-link" href="/blog"> blog </a>
           </div>
-        </div>
       </nav>
     </header>
 	`)

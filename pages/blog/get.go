@@ -37,27 +37,23 @@ func GET(c context.Context) (HtmlContent, int, error) {
 	return Html(`
 		{{#Page title="Blog"}}
 			{{#Header}}{{/Header}}
-			<main class="w-full h-full">
-				<div class="w-full flex flex-1 flex-row justify-center">
-					<div class="flex flex-row flex-1 items-center max-w-5xl text-lg font-source p-4 mt-4">
-						<div class="flex flex-1 flex-col">
-							<div class="flex flex-1 flex-col">
-								{{#each posts as |post| }}
-									<div class="flex flex-1 flex-row mt-2">
-										<div class="flex-1">
-											<div>
-												▪
-												<a class="ml-2 border-b border-black" href="/blog/{{ post.ID }}"> {{ post.Title }} </a>
-											</div>
-										</div>
-										<div class="">{{ post.Date }}</div>
+			{{#Layout}}
+				<div class="flex flex-1 flex-col">
+					<div class="flex flex-1 flex-col">
+						{{#each posts as |post| }}
+							<div class="flex flex-1 flex-row mt-2">
+								<div class="flex-1">
+									<div>
+										▪
+										<a class="ml-2 border-b border-black" href="/blog/{{ post.ID }}"> {{ post.Title }} </a>
 									</div>
-								{{/each}}
+								</div>
+								<div class="">{{ post.Date }}</div>
 							</div>
-						</div>
+						{{/each}}
 					</div>
 				</div>
-			</main>
+			{{/Layout}}
 		{{/Page}}
 		`).
 		Prop("posts", posts).

@@ -25,7 +25,9 @@ func Page(props PageProps) *Template {
 					<meta name="keywords" content="peter john,pyros.sh,full stack developer,bangalore,india" />
 					<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover" />
 					<link rel="icon" href="/assets/icon.png" />
+					<link rel="stylesheet" href="/assets/css/normalize@8.0.1.css" />
 					<link rel="stylesheet" href="/assets/css/styles.css" />
+					<link rel="stylesheet" href="/assets/css/tw.css" />
 					<script defer src="/assets/js/alpinejs@3.9.6.js"></script>
 			</head>
 			<body>

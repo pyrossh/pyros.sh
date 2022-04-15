@@ -10,12 +10,12 @@ func GET(c context.Context) (HtmlContent, int, error) {
 	return Html(`
 		{{#Page title="Page Not Found"}}
 			{{#Header}}{{/Header}}
-			<main class="flex flex-1 flex-col mt-20 items-center">
+			{{#Layout}}
 				<h1 class="text-5xl">Page Not Found</h1>
 				<h2 class="text-lg mt-20">
 					<a class="underline" href="/">Go Back</a>
 				</h1>
-			</main>
+			{{/Layout}}
 		{{/Page}}
 		`).RenderWithStatus(404)
 }

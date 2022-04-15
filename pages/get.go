@@ -42,57 +42,53 @@ func GET(ctx context.Context) (HtmlContent, int, error) {
 	return Html(`
 		{{#Page title="pyros.sh"}}
 			{{#Header}}{{/Header}}
-			<main class="w-full h-full">
-				<div class="w-full flex flex-1 flex-row justify-center">
-					<div class="flex flex-row flex-1 items-center max-w-5xl text-lg font-source p-2 mt-4 sm:p-4">
-						<div>
+			{{#Layout}}
+				<div>
+					<div>
+						Hi there, I'm <strong>Peter John</strong>, a fullstack developer from Bangalore, India. I love writing code and I am lucky enough to do this as my
+						job. I currently work for Equal Experts. I have a strong passion for golang but I also work with react and nodejs.
+						<p>
+							I like to work on open source and hobby projects. Over the course of 8 years I've accumlated a lot of useful projects used by many people around
+							the world.
+						</p>
+					</div>
+					{{#Slider slides=slides}}
+					{{/Slider}}
+					<div class="flex flex-col sm:flex-row">
+						<div class="flex flex-1 flex-col">
 							<div>
-								Hi there, I'm <strong>Peter John</strong>, a fullstack developer from Bangalore, India. I love writing code and I am lucky enough to do this as my
-								job. I currently work for Equal Experts. I have a strong passion for golang but I also work with react and nodejs.
-								<p>
-									I like to work on open source and hobby projects. Over the course of 8 years I've accumlated a lot of useful projects used by many people around
-									the world.
-								</p>
+								<div class="text-2xl font-bold mt-6"><i class="icon-sitemap"></i>Interests</div>
+								<div class="mt-6">These are some of the stuff I work on</div>
+								<ul class="ml-6 list-disc grid grid-cols-3 gap-2 mt-6">
+									<li>HTML</li>
+									<li>Javascript</li>
+									<li>CSS</li>
+									<li>SVG</li>
+									<li>Go</li>
+									<li>Rust</li>
+									<li>Nodejs</li>
+									<li>Python</li>
+									<li>Java</li>
+									<li>Reactjs</li>
+									<li>Serverless</li>
+									<li>Web Components</li>
+								</ul>
 							</div>
-							{{#Slider slides=slides}}
-							{{/Slider}}
-							<div class="flex flex-col sm:flex-row">
-								<div class="flex flex-1 flex-col">
-									<div>
-										<div class="text-2xl font-bold mt-6"><i class="icon-sitemap"></i>Interests</div>
-										<div class="mt-6">These are some of the stuff I work on</div>
-										<ul class="ml-6 list-disc grid grid-cols-3 gap-2 mt-6">
-											<li>HTML</li>
-											<li>Javascript</li>
-											<li>CSS</li>
-											<li>SVG</li>
-											<li>Go</li>
-											<li>Rust</li>
-											<li>Nodejs</li>
-											<li>Python</li>
-											<li>Java</li>
-											<li>Reactjs</li>
-											<li>Serverless</li>
-											<li>Web Components</li>
-										</ul>
-									</div>
-								</div>
-								<div class="flex flex-1 flex-col">
-									<div>
-										<div class="text-2xl font-bold mt-6"><i class="icon-chat"></i> Contact</div>
-										<div class="mt-6">You can contact me through any of these methods</div>
-										<ul class="mt-6 ml-6 list-disc text-lg grid grid-cols-1 gap-2">
-											<li>Email: <a class="link ml-2" href="mailto:peter.john@pyros.sh">peter.john@pyros.sh</a></li>
-											<li>Github: <a class="link ml-2" href="https://github.com/pyrossh">pyrossh</a></li>
-											<li>LinkedIn: <a class="link ml-2" href="https://www.linkedin.com/in/peter-john-in">Peter John</a></li>
-										</ul>
-									</div>
-								</div>
+						</div>
+						<div class="flex flex-1 flex-col">
+							<div>
+								<div class="text-2xl font-bold mt-6"><i class="icon-chat"></i> Contact</div>
+								<div class="mt-6">You can contact me through any of these methods</div>
+								<ul class="mt-6 ml-6 list-disc text-lg grid grid-cols-1 gap-2">
+									<li>Email: <a class="link ml-2" href="mailto:peter.john@pyros.sh">peter.john@pyros.sh</a></li>
+									<li>Github: <a class="link ml-2" href="https://github.com/pyrossh">pyrossh</a></li>
+									<li>LinkedIn: <a class="link ml-2" href="https://www.linkedin.com/in/peter-john-in">Peter John</a></li>
+								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
-			</main>
+			{{/Layout}}
 		{{/Page}}
 		`).
 		Prop("slides", slides).

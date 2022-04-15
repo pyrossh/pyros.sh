@@ -21,7 +21,7 @@ func Slider(props SliderProps) *Template {
 	return Html(`
 		<article>
       <div class="pt-10">
-        <div class="bg-slider mb-8 rounded-sm overflow-hidden">
+        <div class="slider-box">
 					{{#each props.Slides as |slide| }}
 						<div class="flex flex-row relative w-full overflow-hidden">
 							<div class="flex flex-col sm:flex-row w-full p-4 sm:p-8">
