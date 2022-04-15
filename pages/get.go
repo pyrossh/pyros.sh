@@ -83,7 +83,7 @@ func GET(ctx context.Context) (HtmlContent, int, error) {
 										<div class="mt-6">You can contact me through any of these methods</div>
 										<ul class="mt-6 ml-6 list-disc text-lg grid grid-cols-1 gap-2">
 											<li>Email: <a class="link ml-2" href="mailto:peter.john@pyros.sh">peter.john@pyros.sh</a></li>
-											<li>Github: <a class="link ml-2" href="https://github.com/pyros2097">pyrossh</a></li>
+											<li>Github: <a class="link ml-2" href="https://github.com/pyrossh">pyrossh</a></li>
 											<li>LinkedIn: <a class="link ml-2" href="https://www.linkedin.com/in/peter-john-in">Peter John</a></li>
 										</ul>
 									</div>
