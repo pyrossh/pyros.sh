@@ -11,8 +11,8 @@ import (
 
 	"pyros.sh/assets"
 	"pyros.sh/components"
-	"pyros.sh/pages"
 	"pyros.sh/pages/404"
+	"pyros.sh/pages"
 	"pyros.sh/pages/blog"
 	"pyros.sh/pages/blog/_id_"
 	"pyros.sh/pages/ref"
@@ -33,11 +33,12 @@ func main() {
 	r := mux.NewRouter()
 	r.Use(gromer.CorsMiddleware)
 	r.Use(gromer.LogMiddleware)
-	r.NotFoundHandler = gromer.NotFoundHandler
+	
+	r.NotFoundHandler = gromer.StatusHandler(not_found_404.GET)
+	
 	gromer.Static(r, "/assets/", assets.FS)
 	gromer.Handle(r, "GET", "/api", gromer.ApiExplorer)
 	gromer.Handle(r, "GET", "/", pages.GET)
-	gromer.Handle(r, "GET", "/404", not_found.GET)
 	gromer.Handle(r, "GET", "/blog", blog.GET)
 	gromer.Handle(r, "GET", "/blog/{id}", blog_id_.GET)
 	gromer.Handle(r, "GET", "/ref", ref.GET)

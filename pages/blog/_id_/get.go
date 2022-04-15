@@ -3,7 +3,6 @@ package blog_id_
 import (
 	"bytes"
 	"context"
-	"fmt"
 	"html/template"
 	"strings"
 
@@ -11,6 +10,7 @@ import (
 	"github.com/yuin/goldmark"
 	highlighting "github.com/yuin/goldmark-highlighting"
 	"pyros.sh/assets"
+	not_found_404 "pyros.sh/pages/404"
 )
 
 var markdown = goldmark.New(
@@ -53,7 +53,7 @@ func GET(c context.Context, id string) (HtmlContent, int, error) {
 				Render()
 		}
 	}
-	return HtmlErr(404, fmt.Errorf("Post not found"))
+	return not_found_404.GET(c)
 }
 
 // export const head = ({ config, item }) => {

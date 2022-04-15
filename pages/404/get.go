@@ -1,4 +1,4 @@
-package not_found
+package not_found_404
 
 import (
 	"context"
@@ -17,5 +17,5 @@ func GET(c context.Context) (HtmlContent, int, error) {
 				</h1>
 			</main>
 		{{/Page}}
-		`).Render()
+		`).RenderWithStatus(404)
 }
