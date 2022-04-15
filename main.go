@@ -31,18 +31,24 @@ func init() {
 func main() {
 	port := os.Getenv("PORT")
 	r := mux.NewRouter()
-	r.Use(gromer.CorsMiddleware)
 	r.Use(gromer.LogMiddleware)
 	
 	r.NotFoundHandler = gromer.StatusHandler(not_found_404.GET)
 	
 	gromer.Static(r, "/assets/", assets.FS)
+	gromer.Handle(r, "GET", "/styles.css", gromer.Styles)
 	gromer.Handle(r, "GET", "/api", gromer.ApiExplorer)
 	gromer.Handle(r, "GET", "/", pages.GET)
 	gromer.Handle(r, "GET", "/blog", blog.GET)
 	gromer.Handle(r, "GET", "/blog/{id}", blog_id_.GET)
 	gromer.Handle(r, "GET", "/ref", ref.GET)
 	gromer.Handle(r, "GET", "/work", work.GET)
+	
+
+	apiRouter := r.NewRoute().Subrouter()
+	apiRouter.Use(gromer.CorsMiddleware)
+	
+	
 	
 	log.Info().Msg("http server listening on http://localhost:"+port)
 	srv := server.New(r, nil)
