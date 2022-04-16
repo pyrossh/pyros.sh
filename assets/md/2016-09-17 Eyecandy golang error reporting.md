@@ -19,7 +19,7 @@ import (
     "database/sql"
     "runtime"
 )
-
+xr
 type WrappedError struct {
     Err error
     StackTrace string
@@ -64,7 +64,7 @@ https://github.com/maruel/panicparse/issues/8
 with the developer and +1’s we got a proper api which I could use.
 And now I haz got a prettier stack traces like this,
 
-![Email 1](/assets/images/email1.png)
+![Terminal 1](/assets/images/terminal1.jpg)
 
 So great I got ANSI coloring setup and the errors look great in our console but what about our
 mails. Of course this wasn’t going to work since emails primarily render text and HTML only, and
@@ -80,4 +80,4 @@ https://github.com/aymerick/douceur
 
 Finally after messing around with so many libraries I got around to getting it to work and this is how it looks in my email,
 
-![Email 2](/assets/images/email2.png)
+![Email 1](/assets/images/email1.png)

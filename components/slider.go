@@ -11,6 +11,10 @@ var _ = Css(`
 		border-radius: 0.125rem;
 		background-color: var(--slider-bg);
 	}
+
+	.repo-link {
+		color: black;
+	}
 `)
 
 type Slide struct {
@@ -33,7 +37,7 @@ func Slider(props SliderProps) *Template {
 				{{#each props.Slides as |slide| }}
 					<div class="flex flex-col sm:flex-row w-full p-4 sm:p-8">
 						<div class="sm:w-5/12 flex-1 mr-8">
-							<a href="{{ slide.Link }}" class="underline" target="_blank" rel="noopener noreferrer">
+							<a href="{{ slide.Link }}" class="repo-link" target="_blank" rel="noopener noreferrer">
 								<p class="text-2xl font-bold mb-4">{{ slide.Title }}</p>
 							</a>
 							<p class="leading-6 mb-4">{{ slide.SubTitle }}</p>

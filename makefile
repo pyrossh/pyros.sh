@@ -18,3 +18,5 @@ docker-build:
 
 docker-run:
 	docker run -p 3000:3000 -e PORT=3000 pyros.sh:latest
+
+# TODO: Fix lighthouse perfs regarding images and caching styles.css

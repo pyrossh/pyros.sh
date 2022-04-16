@@ -22,12 +22,6 @@ var _ = Css(`
 		width: 100%;
 	}
 
-	.md-container a {
-		font-size: 1.125rem;
-		line-height: 1.75rem;
-		color: var(--blue);
-	}
-
 	.md-container pre {
 		max-width: 64rem;
 		font-family: monospace;
