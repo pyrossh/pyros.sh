@@ -57,16 +57,11 @@ information like context and session information and things like that. On top of
 prettier so that it would easier to figure out where the error started from.
 
 So to parse the error stack trace I found this cool library which does that for and on top of that it also themes it very well
-<a class="text-blue-800" href="https://github.com/maruel/panicparse" target="_blank" rel="noopener noreferrer">
 https://github.com/maruel/panicparse
-</a>
 
-But then it didn’t properly expose an API to do it properly and after a few dabblings here
-<a class="text-blue-800" href="https://github.com/maruel/panicparse/issues/8" target="_blank" rel="noopener noreferrer">
+But then it didn’t properly expose an API to do it properly and after a few dabblings here,
 https://github.com/maruel/panicparse/issues/8
-</a>
 with the developer and +1’s we got a proper api which I could use.
-
 And now I haz got a prettier stack traces like this,
 
 ![Email 1](/assets/images/email1.png)
@@ -76,17 +71,12 @@ mails. Of course this wasn’t going to work since emails primarily render text 
 ANSI color codes was going to make our messages a mess.
 
 So then I went about digging github for an ANSI terminal codes to HTML converter so that it would
-look exactly like this in my mail. And then I found this cool go library which does that
-<a class="text-blue-800" href="https://github.com/buildkite/terminal" target="_blank" rel="noopener noreferrer">
+look exactly like this in my mail. And then I found this cool go library which does that,
 https://github.com/buildkite/terminal
-</a>
 
 Now all emails require inline CSS or else they wouldn’t work so then I had to find out a way to do that too.
-
-And this was it
-<a class="text-blue-800" href="https://github.com/aymerick/douceur" target="_blank" rel="noopener noreferrer">
+And this was it,
 https://github.com/aymerick/douceur
-</a>
 
 Finally after messing around with so many libraries I got around to getting it to work and this is how it looks in my email,
 

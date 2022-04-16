@@ -49,7 +49,7 @@ func GET(ctx context.Context) (HtmlContent, int, error) {
 						job. I currently work for Equal Experts. I have a strong passion for golang but I also work with react and nodejs.
 						<p>
 							I like to work on open source and hobby projects. Over the course of 8 years I've accumlated a lot of useful projects used by many people around
-							the world.
+							the world. These are some of them,
 						</p>
 					</div>
 					{{#Slider slides=slides}}
@@ -66,12 +66,12 @@ func GET(ctx context.Context) (HtmlContent, int, error) {
 									<li>SVG</li>
 									<li>Go</li>
 									<li>Rust</li>
-									<li>Nodejs</li>
-									<li>Python</li>
+									<li>Node</li>
 									<li>Java</li>
-									<li>Reactjs</li>
+									<li>React</li>
+									<li>Postgres</li>
+									<li>k8s</li>
 									<li>Serverless</li>
-									<li>Web Components</li>
 								</ul>
 							</div>
 						</div>

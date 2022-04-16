@@ -6,8 +6,7 @@ High Ho Gopibot away!
 
 Everybody please meet Gopibot our chatops bot which I built at Numberz to help us deploy our countless microservices to QA.
 
-So here is the backstory,
-
+So here is the backstory,  
 I was one of the developers who had access to our QA and Prod servers and the other person was the Head of Engineering and he is generally a busy guy.
 So whenever there is a change that needs to be deployed everyone comes to me and tells me to deploy their microservice/frontend to the QA and blatantly
 interrupts my awesome coding cycle.
@@ -25,10 +24,7 @@ So I decided to take a shot at this in my free time. And it seems it was simpler
 platform. We used it daily for everything and I thought why not have a specific channel just where the bot resides and people could talk to the bot.
 
 Since we are typically a nodejs shop I decided to find a way to send messages to a slack bot. And slack has this really great sdk for nodejs.
-<a class="text-blue-800" href="https://github.com/slackapi/node-slack-sdk" target="_blank" rel="noopener noreferrer">
-https://github.com/slackapi/node-slack-sdk
-</a>
-
+https://github.com/slackapi/node-slack-sdk  
 First I went and created the bot in my slack team settings. And then wrote a script which would allow it to read messages from the channel it was added.
 
 Here is the simple script,
@@ -112,7 +108,7 @@ So what the bot does is when someone mentions the bot with a command to run. It 
 it is, it executes the corresponding shell command for it on our QA server and then gives back progress/error/finished messages back to the channel so
 that everyone will be notified that someone had done a deployment. This is how it looks like,
 
-img: /assets/images/gopibot.jpg
+![Email 2](/assets/images/gopibot.jpg)
 
 Anyways to just have a boring bot that just runs boring commands was kinda boring. I thought of spicing up the bot interaction by making it say weird
 things if you keep giving it invalid commands. Making it more of a life like bot.

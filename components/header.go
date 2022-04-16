@@ -14,6 +14,15 @@ var _ = Css(`
 		background-color: var(--black);
 		font-family: monospace;
 	}
+
+	header > nav > div {
+		display: flex;
+		flex-direction: row;
+		flex: 1;
+		align-items: center;
+		padding: var(--space-3);
+		max-width: var(--5xl);
+	}
 	
 	header > nav .logo {
 		display: flex;
@@ -30,12 +39,35 @@ var _ = Css(`
 			line-height: 2rem;
 		}
 	}
+
+	header > nav .links-container {
+		display: flex;
+		flex-direction: row;
+		flex: 1;
+		align-items: center;
+		font-size: 1rem;
+		line-height: 1.5rem
+	}
+
+	@media (min-width: 640px) {
+		header > nav .links-container {
+			font-size: 1.125rem;
+			line-height: 1.75rem
+		}
+	}
 	
 	header > nav .nav-link {
+		color: white;
 		margin-left: 0.25rem;
 		margin-right: 0.25rem;
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
+	}
+
+	header > nav .nav-sep {
+		color: white;
+		font-size: 1.125rem;
+		line-height: 1.75rem
 	}
 	
 	header > nav .nav-link:hover {
@@ -47,13 +79,13 @@ func Header() *Template {
 	return Html(`
 		<header>
       <nav>
-          <div class="flex flex-row flex-1 items-center max-w-5xl text-white p-3">
+          <div>
             <a class="logo" href="/"> pyros.sh </a>
-            <div class="flex flex-row flex-1 items-center text-base sm:text-lg">
+            <div class="links-container">
               <a class="nav-link" href="/work"> work </a>
-              <div class="text-lg">|</div>
+              <div class="nav-sep">|</div>
               <a class="nav-link" href="/ref"> ref </a>
-              <div class="text-lg">|</div>
+              <div class="nav-sep">|</div>
               <a class="nav-link" href="/blog"> blog </a>
           </div>
       </nav>

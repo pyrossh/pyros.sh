@@ -25,6 +25,11 @@ var _ = Css(`
 		--yellow: #f1fa8c;
 		--blue: #0645ad;
 		--slider-bg: #f0ede2;
+		--space-2: 0.5rem;
+		--space-3: 0.75rem;
+		--space-4: 1rem;
+		--space-10: 2.5rem;
+		--5xl: 64rem;
 	}
 
 	a {
@@ -83,17 +88,6 @@ var _ = Css(`
 		margin: 8px;
 		line-height: 20px;
 		overflow-x: scroll;
-	}
-
-	main {
-		font-family: serif;
-	}
-
-	.slider-box {
-		margin-bottom: 2rem;
-		overflow: hidden;
-		border-radius: 0.125rem;
-		background-color: var(--slider-bg);
 	}
 
 	.fixed {
@@ -408,3 +402,18 @@ func Page(props PageProps) *Template {
 		</html>
 	`)
 }
+
+//     <title>${item.title}</title>
+//     <meta name="title" content="${item.title}" />
+//     <meta name="description" content="${config.description}" />
+//     <meta name="image" content="${config.image}" />
+//     <meta name="keywords" content="${config.keywords}" />
+//     <meta name="author" content="${config.author}" />
+//     <meta property="og:type" content="website" />
+//     <meta property="og:url" content="${config.url}" />
+//     <meta property="og:site_name" content="${config.siteName}" />
+//     <meta property="og:title" content="${item.title}" />
+//     <meta property="og:description" content="${config.description}" />
+//     <meta property="og:image" content="${config.image}" />
+//     <link rel="canonical" href="${config.url}" />
+//     <link rel="stylesheet" href="/assets/css/dracula.css" />

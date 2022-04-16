@@ -9,11 +9,56 @@ import (
 	. "github.com/pyros2097/gromer/handlebars"
 	"github.com/yuin/goldmark"
 	highlighting "github.com/yuin/goldmark-highlighting"
+	"github.com/yuin/goldmark/extension"
+	"mvdan.cc/xurls/v2"
 	"pyros.sh/assets"
 	not_found_404 "pyros.sh/pages/404"
 )
 
+var _ = Css(`
+	.md-container {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+	}
+
+	.md-container a {
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		color: var(--blue);
+	}
+
+	.md-container pre {
+		max-width: 64rem;
+		font-family: monospace;
+		font-size: 14px;
+		border-radius: 16px;
+		padding: 16px;
+		margin: 8px;
+		line-height: 20px;
+		overflow-x: scroll;
+	}
+
+	.md-container p {
+		line-height: 28px;
+	}
+
+	.md-container img {
+		width: 100%;
+	}
+`)
+
 var markdown = goldmark.New(
+	goldmark.WithExtensions(
+		extension.NewLinkify(
+			extension.WithLinkifyAllowedProtocols([][]byte{
+				[]byte("https:"),
+			}),
+			extension.WithLinkifyURLRegexp(
+				xurls.Strict(),
+			),
+		),
+	),
 	goldmark.WithExtensions(
 		highlighting.NewHighlighting(
 			highlighting.WithStyle("dracula"),
@@ -42,7 +87,7 @@ func GET(c context.Context, id string) (HtmlContent, int, error) {
 				{{#Page title="Blog"}}
 					{{#Header}}{{/Header}}
 					{{#Layout}}
-						<div class="block">
+						<div class="md-container">
 							{{ md }}
 						</div>
 					{{/Layout}}
@@ -55,55 +100,3 @@ func GET(c context.Context, id string) (HtmlContent, int, error) {
 	}
 	return not_found_404.GET(c)
 }
-
-// export const head = ({ config, item }) => {
-//   return html`
-//     <title>${item.title}</title>
-//     <meta name="title" content="${item.title}" />
-//     <meta name="description" content="${config.description}" />
-//     <meta name="image" content="${config.image}" />
-//     <meta name="keywords" content="${config.keywords}" />
-//     <meta name="author" content="${config.author}" />
-//     <meta property="og:type" content="website" />
-//     <meta property="og:url" content="${config.url}" />
-//     <meta property="og:site_name" content="${config.siteName}" />
-//     <meta property="og:title" content="${item.title}" />
-//     <meta property="og:description" content="${config.description}" />
-//     <meta property="og:image" content="${config.image}" />
-//     <link rel="canonical" href="${config.url}" />
-//     <link rel="stylesheet" href="/assets/css/dracula.css" />
-//   `;
-// };
-
-// export const body = ({ item }) => {
-//   return html`
-//     <app-header></app-header>
-//     <main class="w-full h-full">
-//       <div class="w-full flex flex-1 flex-row justify-center">
-//         <div class="flex flex-row flex-1 items-center max-w-5xl text-lg font-source p-4 mt-4">
-//           <div class="w-full flex flex-1 flex-row justify-center">
-//             <div class="flex flex-row flex-1 items-center max-w-5xl text-lg font-source p-4 mt-4">
-//               <div>
-//                 <div class="flex pb-4 border-black border-b">
-//                   <div class="flex-1 text-2xl font-bold">${item.title}</div>
-//                   <div class="mr-4">${item.uploadedOn}</div>
-//                 </div>
-//                 ${item.description.map((text) => {
-//                   if (text) {
-//                     if (text.code) {
-//                       // bg-codebg font-monospace text-sm rounded-md py-1 px-4 my-3 mr-4
-//                     }
-//                     if (text.img) {
-//                       return html`<div class="my-6"><img src="${text.img}" alt="${text.img}" /></div>`;
-//                     }
-//                     return html` <p class="text-black font-source mt-2">${text}</p> `;
-//                   }
-//                 })}
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </main>
-//   `;
-// };
