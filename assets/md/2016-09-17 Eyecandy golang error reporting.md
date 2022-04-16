@@ -1,6 +1,6 @@
-# Eyecandy golang error reporting
+## Eyecandy golang error reporting
 
-## September 17, 2016
+### September 17, 2016
 
 We at playlyfe wanted to get an email report as soon as an error occurred on our production servers. Since golang does not have
 stack traces with its inbuilt error mechanism we had to find a quick and simple solution which wouldn’t require too much refactoring
