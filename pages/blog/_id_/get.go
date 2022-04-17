@@ -82,8 +82,15 @@ func GET(c context.Context, id string) (HtmlContent, int, error) {
 			}
 			metaData := meta.Get(context)
 			image := metaData["image"]
+			tags := metaData["tags"].([]interface{})
+			keywords := []string{}
+			keywords = append(keywords, "pyros.sh", "pyrossh", "blog post")
+			keywords = append(keywords, strings.Split(id, "-")...)
+			for _, t := range tags {
+				keywords = append(keywords, t.(string))
+			}
 			return Html(`
-				{{#Page url=url title=title description=description keywords="pyros.sh,pyrossh,post" image=image}}
+				{{#Page url=url title=title description=description keywords=keywords image=image}}
 					{{#Header}}{{/Header}}
 					{{#Layout}}
 						<div class="md-container">
@@ -96,6 +103,7 @@ func GET(c context.Context, id string) (HtmlContent, int, error) {
 				Prop("title", title).
 				Prop("description", title).
 				Prop("image", image).
+				Prop("keywords", strings.Join(keywords, ",")).
 				Prop("md", template.HTML(buf.String())).
 				Prop("url", utils.GetUrl(c)).
 				Render()
