@@ -1,7 +1,7 @@
 ---
 title: Eyecandy golang error reporting
 description: Better error messages logging in golang
-image: /assets/images/terminal1.jpg
+image: images/terminal1.jpg
 date: September 17, 2016
 tags:
   - golang

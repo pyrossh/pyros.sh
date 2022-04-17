@@ -3,7 +3,9 @@ package pages
 import (
 	"context"
 
+	"github.com/pyros2097/gromer"
 	. "github.com/pyros2097/gromer/handlebars"
+	"pyros.sh/assets"
 	"pyros.sh/components"
 	"pyros.sh/utils"
 )
@@ -14,28 +16,28 @@ var slides = []*components.Slide{
 		Link:        "https://github.com/pyros2097/rust-embed",
 		SubTitle:    "A rust macro which loads files into the rust binary at compile time during release and loads the file from the fs during dev.",
 		Description: "You can use this to embed your css, js and images into a single executable which can be deployed to your servers. Also it makes it easy to build a very small docker image for you to deploy.",
-		ImgSrc:      "/assets/images/rust-embed.png",
+		ImgSrc:      gromer.GetAssetUrl(assets.FS, "images/rust-embed.png"),
 	},
 	{
 		Title:       "Gromer",
 		Link:        "https://github.com/pyros2097/gromer",
 		SubTitle:    "Gromer is a framework and cli to build web apps in golang.\nIt uses a declarative syntax using inline handlebar templates for components and pages.",
 		Description: "It also generates http handlers for your routes which follow a particular folder structure. Similar to other frameworks like nextjs, sveltekit. These handlers are also normal functions and can be imported in other packages to call them directly.",
-		ImgSrc:      "/assets/images/gromer.png",
+		ImgSrc:      gromer.GetAssetUrl(assets.FS, "images/gromer.png"),
 	},
 	{
 		Title:       "Pine",
 		Link:        "https://github.com/pyros2097/pine",
 		SubTitle:    "A programming language with a syntax largely inspired by nim but with the simplicity of go. It has jsx support in built by default.",
 		Description: "first class functions clean syntax basics: int, float, bool, byte, enum references: string, array, map, nil, error functions: extern, proc, method, test conditions: if, elif, else, match, break, continue loops: for inbuilt: echo, assert",
-		ImgSrc:      "/assets/images/pine.png",
+		ImgSrc:      gromer.GetAssetUrl(assets.FS, "images/pine.png"),
 	},
 	{
 		Title:       "Gdx Studio",
 		Link:        "https://github.com/pyros2097/gdx-studio",
 		SubTitle:    "GdxStudio is used for creating awesome games using libGDX.",
 		Description: "It has all the features of libGDX built-in so you can easily,start creating games with it. Automatic Asset Loading including Atlas, TextureRegions, BitmapFonts, Music, Sound. Tools like Font Editor, Particle Editor, Texture Packer, SceneEditor, MapEditor, ActorEditor, ImagingTools are already built into it.",
-		ImgSrc:      "/assets/images/gdx-studio.png",
+		ImgSrc:      gromer.GetAssetUrl(assets.FS, "images/gdx-studio.png"),
 	},
 }
 

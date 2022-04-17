@@ -3,7 +3,9 @@ package components
 import (
 	"html/template"
 
+	"github.com/pyros2097/gromer"
 	. "github.com/pyros2097/gromer/handlebars"
+	"pyros.sh/assets"
 )
 
 var _ = Css(`
@@ -529,12 +531,15 @@ func Page(props PageProps) *Template {
 					<meta property="og:description" content="{{ props.Description }}" />
 					<meta property="og:image" content="{{ props.Image }}" />
 					<link rel="canonical" href="{{ props.Url }}" />
-					<link rel="icon" href="/assets/images/icon.png" />
-					<link rel="stylesheet" href="/styles.css" />
+					<link rel="icon" href="{{ iconUrl }}" />
+					<link rel="stylesheet" href="{{ stylesUrl }}" />
 			</head>
 			<body>
 			{{ props.Children }}
 			</body>
 		</html>
-	`)
+	`).Props(
+		"iconUrl", gromer.GetAssetUrl(assets.FS, "images/icon.png"),
+		"stylesUrl", gromer.GetStylesUrl(),
+	)
 }
