@@ -1,14 +1,13 @@
 ---
+title: Eyecandy golang error reporting
+description: Better error messages logging in golang
 image: /assets/images/terminal1.jpg
+date: September 17, 2016
 tags:
   - golang
   - error
-  - email
+  - formatting
 ---
-
-## Eyecandy golang error reporting
-
-### September 17, 2016
 
 We at playlyfe wanted to get an email report as soon as an error occurred on our production servers. Since golang does not have
 stack traces with its inbuilt error mechanism we had to find a quick and simple solution which wouldn’t require too much refactoring

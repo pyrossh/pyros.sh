@@ -204,11 +204,14 @@ var _ = Css(`
 		--black: #1a1a1a;
 		--yellow: #f1fa8c;
 		--blue: #0645ad;
+		--blue-light: #0e81c7;
 		--slider-bg: #f0ede2;
 		--space-2: 0.5rem;
 		--space-3: 0.75rem;
 		--space-4: 1rem;
 		--space-10: 2.5rem;
+		--f-normal: 1rem;
+		--f-large: 1.125rem;
 		--5xl: 64rem;
 	}
 

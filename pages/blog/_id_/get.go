@@ -25,6 +25,26 @@ var _ = Css(`
 		width: 100%;
 	}
 
+	.md-container h1 {
+		color: var(--blue);
+		margin: 0;
+	}
+
+	.md-container h2 {
+		color: var(--blue-light);
+		font-size: var(--f-large);
+		font-weight: 500;
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+
+	.md-container h3 {
+		color: var(--blue-light);
+		font-size: var(--f-large);
+		font-weight: 500;
+		margin: 0;
+	}
+
 	.md-container pre {
 		max-width: 64rem;
 		font-family: monospace;
@@ -38,6 +58,19 @@ var _ = Css(`
 
 	.md-container p {
 		line-height: 28px;
+	}
+
+	.md-container .title-container {
+		display: flex;
+		flex: 1;
+		font-family: serif;
+	}
+
+	.md-container .title-container .date {
+		display: flex;
+		flex: 1;
+		justify-content: flex-end;
+		margin-right: var(--space-10);
 	}
 `)
 
@@ -81,7 +114,9 @@ func GET(c context.Context, id string) (HtmlContent, int, error) {
 				return HtmlErr(500, err)
 			}
 			metaData := meta.Get(context)
+			description := metaData["description"]
 			image := metaData["image"]
+			date := metaData["date"]
 			tags := metaData["tags"].([]interface{})
 			keywords := []string{}
 			keywords = append(keywords, "pyros.sh", "pyrossh", "blog post")
@@ -94,6 +129,15 @@ func GET(c context.Context, id string) (HtmlContent, int, error) {
 					{{#Header}}{{/Header}}
 					{{#Layout}}
 						<div class="md-container">
+							<div class="title-container">
+								<div>
+									<h1>{{ title }}</h1>
+									<h2>{{ description }}</h2>
+								</div>
+								<div class="date">
+									<h3>{{ date }}</h3>
+								</div>
+							</div>
 							{{ md }}
 						</div>
 					{{/Layout}}
@@ -101,8 +145,9 @@ func GET(c context.Context, id string) (HtmlContent, int, error) {
 				{{/Page}}
 			`).
 				Prop("title", title).
-				Prop("description", title).
+				Prop("description", description).
 				Prop("image", image).
+				Prop("date", date).
 				Prop("keywords", strings.Join(keywords, ",")).
 				Prop("md", template.HTML(buf.String())).
 				Prop("url", utils.GetUrl(c)).

@@ -1,14 +1,14 @@
 ---
+title: Gopibot to the rescue
+description: A slackbot for deploying your applications (chatops)
 image: /assets/images/gopibot.jpg
+date: October 04, 2017
 tags:
   - nodejs
   - slack
   - bot
+  - chatops
 ---
-
-## Gopibot to the rescue
-
-### October 04, 2017
 
 High Ho Gopibot away!
 
