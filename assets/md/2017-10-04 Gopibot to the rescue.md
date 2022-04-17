@@ -1,3 +1,11 @@
+---
+image: /assets/images/gopibot.jpg
+tags:
+  - nodejs
+  - slack
+  - bot
+---
+
 ## Gopibot to the rescue
 
 ### October 04, 2017

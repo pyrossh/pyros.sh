@@ -5,6 +5,7 @@ import (
 
 	. "github.com/pyros2097/gromer/handlebars"
 	"pyros.sh/components"
+	"pyros.sh/utils"
 )
 
 var slides = []*components.Slide{
@@ -38,9 +39,9 @@ var slides = []*components.Slide{
 	},
 }
 
-func GET(ctx context.Context) (HtmlContent, int, error) {
+func GET(c context.Context) (HtmlContent, int, error) {
 	return Html(`
-		{{#Page title="pyros.sh"}}
+		{{#Page url=url title="pyros.sh" description="Hi there, I'm Peter John, a fullstack developer from Bangalore, India." keywords="peter john,pyros.sh,pyrossh,full stack developer,bangalore,india"}}
 			{{#Header}}{{/Header}}
 			{{#Layout}}
 				<div>
@@ -92,5 +93,6 @@ func GET(ctx context.Context) (HtmlContent, int, error) {
 		{{/Page}}
 		`).
 		Prop("slides", slides).
+		Prop("url", utils.GetUrl(c)).
 		Render()
 }

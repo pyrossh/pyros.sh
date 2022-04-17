@@ -4,11 +4,13 @@ import (
 	"context"
 
 	. "github.com/pyros2097/gromer/handlebars"
+
+	"pyros.sh/utils"
 )
 
 func GET(c context.Context) (HtmlContent, int, error) {
 	return Html(`
-		{{#Page title="Reference"}}
+		{{#Page url=url title="Reference" description="Reference" keywords="pyros.sh,pyrossh,reference"}}
 			{{#Header}}{{/Header}}
 			{{#Layout}}
 				<div>
@@ -126,5 +128,7 @@ func GET(c context.Context) (HtmlContent, int, error) {
 				</div>
 			{{/Layout}}
 		{{/Page}}
-		`).Render()
+		`).
+		Prop("url", utils.GetUrl(c)).
+		Render()
 }

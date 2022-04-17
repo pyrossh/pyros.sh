@@ -8,7 +8,7 @@ import (
 
 func GET(c context.Context) (HtmlContent, int, error) {
 	return Html(`
-		{{#Page title="Page Not Found"}}
+		{{#Page title="Page Not Found" description="Page Not Found"}}
 			{{#Header}}{{/Header}}
 			{{#Layout}}
 				<h1 class="text-5xl">Page Not Found</h1>

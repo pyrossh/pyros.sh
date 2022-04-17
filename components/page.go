@@ -259,14 +259,6 @@ var _ = Css(`
 		color: var(--blue);
 	}
 
-	.fixed {
-		position: fixed
-	}
-
-	.relative {
-		position: relative
-	}
-
 	.my-3 {
 		margin-top: 0.75rem;
 		margin-bottom: 0.75rem
@@ -321,13 +313,6 @@ var _ = Css(`
 		margin-right: 1rem
 	}
 
-	.block {
-		display: block
-	}
-
-	.inline {
-		display: inline
-	}
 
 	.flex {
 		display: flex
@@ -343,10 +328,6 @@ var _ = Css(`
 
 	.w-full {
 		width: 100%
-	}
-
-	.max-w-5xl {
-		max-width: 64rem
 	}
 
 	.flex-1 {
@@ -389,16 +370,8 @@ var _ = Css(`
 		gap: 0.5rem
 	}
 
-	.overflow-hidden {
-		overflow: hidden
-	}
-
 	.rounded-sm {
 		border-radius: 0.125rem
-	}
-
-	.rounded-md {
-		border-radius: 0.375rem
 	}
 
 	.border {
@@ -419,34 +392,12 @@ var _ = Css(`
 		background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 	}
 
-	.p-3 {
-		padding: 0.75rem
-	}
-
 	.p-2 {
 		padding: 0.5rem
 	}
 
 	.p-4 {
 		padding: 1rem
-	}
-
-	.py-1 {
-		padding-top: 0.25rem;
-		padding-bottom: 0.25rem
-	}
-
-	.px-4 {
-		padding-left: 1rem;
-		padding-right: 1rem
-	}
-
-	.pt-10 {
-		padding-top: 2.5rem
-	}
-
-	.pb-4 {
-		padding-bottom: 1rem
 	}
 
 	.text-base {
@@ -543,8 +494,12 @@ var _ = Css(`
 `)
 
 type PageProps struct {
-	Title    string        `json:"title"`
-	Children template.HTML `json:"children"`
+	Title       string        `json:"title"`
+	Description string        `json:"description"`
+	Keywords    string        `json:"keywords"`
+	Url         string        `json:"url"`
+	Image       string        `json:"image" default:"/assets/images/icon.png"`
+	Children    template.HTML `json:"children"`
 }
 
 func Page(props PageProps) *Template {
@@ -555,14 +510,21 @@ func Page(props PageProps) *Template {
 					<meta charset="UTF-8" />
 					<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 					<meta content="utf-8" http-equiv="encoding" />
-					<title>{{ props.Title }}</title>
-					<meta name="description" content="Hi there, I'm Peter John, a fullstack developer from Bangalore, India." />
-					<meta name="author" content="Peter John,pyros.sh" />
-					<meta name="keywords" content="peter john,pyros.sh,full stack developer,bangalore,india" />
 					<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
-					<link rel="icon" href="/assets/icon.png" />
+					<title>{{ props.Title }}</title>
+					<meta name="description" content="{{ props.Description }}" />
+					<meta name="author" content="pyrossh" />
+					<meta name="image" content="{{ props.Image }}" />
+					<meta name="keywords" content="{{ props.Keywords }}" />
+					<meta property="og:type" content="website" />
+					<meta property="og:url" content="{{ props.Url }}" />
+					<meta property="og:site_name" content="pyros.sh" />
+					<meta property="og:title" content="{{ props.Title }}" />
+					<meta property="og:description" content="{{ props.Description }}" />
+					<meta property="og:image" content="{{ props.Image }}" />
+					<link rel="canonical" href="{{ props.Url }}" />
+					<link rel="icon" href="/assets/images/icon.png" />
 					<link rel="stylesheet" href="/styles.css" />
-					<script defer src="/assets/js/alpinejs@3.9.6.js"></script>
 			</head>
 			<body>
 			{{ props.Children }}
@@ -570,18 +532,3 @@ func Page(props PageProps) *Template {
 		</html>
 	`)
 }
-
-//     <title>${item.title}</title>
-//     <meta name="title" content="${item.title}" />
-//     <meta name="description" content="${config.description}" />
-//     <meta name="image" content="${config.image}" />
-//     <meta name="keywords" content="${config.keywords}" />
-//     <meta name="author" content="${config.author}" />
-//     <meta property="og:type" content="website" />
-//     <meta property="og:url" content="${config.url}" />
-//     <meta property="og:site_name" content="${config.siteName}" />
-//     <meta property="og:title" content="${item.title}" />
-//     <meta property="og:description" content="${config.description}" />
-//     <meta property="og:image" content="${config.image}" />
-//     <link rel="canonical" href="${config.url}" />
-//     <link rel="stylesheet" href="/assets/css/dracula.css" />

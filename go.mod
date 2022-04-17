@@ -4,11 +4,12 @@ go 1.18
 
 require (
 	github.com/gorilla/mux v1.8.0
-	github.com/pyros2097/gromer v0.17.0
+	github.com/pyros2097/gromer v0.17.2
 	github.com/rs/zerolog v1.26.1
 	github.com/yuin/goldmark v1.4.11
 	github.com/yuin/goldmark-highlighting v0.0.0-20220208100518-594be1970594
 	gocloud.dev v0.25.0
+	mvdan.cc/xurls/v2 v2.4.0
 )
 
 require (
@@ -26,12 +27,13 @@ require (
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/segmentio/go-camelcase v0.0.0-20160726192923-7085f1e3c734 // indirect
+	github.com/yuin/goldmark-meta v1.1.0 // indirect
 	go.opencensus.io v0.23.0 // indirect
 	golang.org/x/crypto v0.0.0-20220411220226-7b82a4e95df4 // indirect
 	golang.org/x/net v0.0.0-20220412020605-290c469a71a5 // indirect
 	golang.org/x/sys v0.0.0-20220412211240-33da011f77ad // indirect
 	golang.org/x/text v0.3.7 // indirect
 	golang.org/x/xerrors v0.0.0-20220411194840-2f41105eb62f // indirect
-	mvdan.cc/xurls/v2 v2.4.0 // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
 	xojoc.pw/useragent v0.0.0-20200116211053-1ec61d55e8fe // indirect
 )

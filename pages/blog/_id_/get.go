@@ -9,10 +9,13 @@ import (
 	. "github.com/pyros2097/gromer/handlebars"
 	"github.com/yuin/goldmark"
 	highlighting "github.com/yuin/goldmark-highlighting"
+	meta "github.com/yuin/goldmark-meta"
 	"github.com/yuin/goldmark/extension"
+	"github.com/yuin/goldmark/parser"
 	"mvdan.cc/xurls/v2"
 	"pyros.sh/assets"
 	not_found_404 "pyros.sh/pages/404"
+	"pyros.sh/utils"
 )
 
 var _ = Css(`
@@ -30,19 +33,18 @@ var _ = Css(`
 		padding: 16px;
 		margin: 8px;
 		line-height: 20px;
-		overflow-x: scroll;
+		overflow-x: auto;
 	}
 
 	.md-container p {
 		line-height: 28px;
 	}
-
-	.md-container img {
-		width: 100%;
-	}
 `)
 
 var markdown = goldmark.New(
+	goldmark.WithExtensions(
+		meta.Meta,
+	),
 	goldmark.WithExtensions(
 		extension.NewLinkify(
 			extension.WithLinkifyAllowedProtocols([][]byte{
@@ -74,11 +76,14 @@ func GET(c context.Context, id string) (HtmlContent, int, error) {
 				return HtmlErr(500, err)
 			}
 			var buf bytes.Buffer
-			if err := markdown.Convert(source, &buf); err != nil {
+			context := parser.NewContext()
+			if err := markdown.Convert(source, &buf, parser.WithContext(context)); err != nil {
 				return HtmlErr(500, err)
 			}
+			metaData := meta.Get(context)
+			image := metaData["image"]
 			return Html(`
-				{{#Page title="Blog"}}
+				{{#Page url=url title=title description=description keywords="pyros.sh,pyrossh,post" image=image}}
 					{{#Header}}{{/Header}}
 					{{#Layout}}
 						<div class="md-container">
@@ -88,7 +93,11 @@ func GET(c context.Context, id string) (HtmlContent, int, error) {
 					</main>
 				{{/Page}}
 			`).
+				Prop("title", title).
+				Prop("description", title).
+				Prop("image", image).
 				Prop("md", template.HTML(buf.String())).
+				Prop("url", utils.GetUrl(c)).
 				Render()
 		}
 	}

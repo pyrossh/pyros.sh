@@ -1,3 +1,11 @@
+---
+image: /assets/images/terminal1.jpg
+tags:
+  - golang
+  - error
+  - email
+---
+
 ## Eyecandy golang error reporting
 
 ### September 17, 2016

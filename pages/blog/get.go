@@ -8,6 +8,7 @@ import (
 	. "github.com/pyros2097/gromer/handlebars"
 
 	"pyros.sh/assets"
+	"pyros.sh/utils"
 )
 
 type Post struct {
@@ -35,7 +36,7 @@ func GET(c context.Context) (HtmlContent, int, error) {
 		return posts[i].Date > posts[j].Date
 	})
 	return Html(`
-		{{#Page title="Blog"}}
+		{{#Page url=url title="Blog" description="List of posts" keywords="pyros.sh,pyrossh,blog"}}
 			{{#Header}}{{/Header}}
 			{{#Layout}}
 				<div class="flex flex-1 flex-col">
@@ -57,5 +58,6 @@ func GET(c context.Context) (HtmlContent, int, error) {
 		{{/Page}}
 		`).
 		Prop("posts", posts).
+		Prop("url", utils.GetUrl(c)).
 		Render()
 }
