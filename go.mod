@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/gorilla/mux v1.8.0
-	github.com/pyros2097/gromer v0.18.1
+	github.com/pyros2097/gromer v0.18.2
 	github.com/rs/zerolog v1.26.1
 	github.com/yuin/goldmark v1.4.11
 	github.com/yuin/goldmark-highlighting v0.0.0-20220208100518-594be1970594
