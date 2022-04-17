@@ -25,6 +25,7 @@ func init() {
 	gromer.RegisterComponent(components.Layout)
 	gromer.RegisterComponent(components.Page)
 	gromer.RegisterComponent(components.Slider)
+	gromer.RegisterComponent(components.Tag)
 	
 }
 

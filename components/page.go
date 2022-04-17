@@ -204,7 +204,7 @@ var _ = Css(`
 		--black: #1a1a1a;
 		--black-light: #313a3d;
 		--yellow: #f1fa8c;
-		--yellow-dark: #af9301;
+		--yellow-dark: #6b5a04;
 		--blue: #0645ad;
 		--blue-light: #0e81c7;
 		--slider-bg: #f0ede2;

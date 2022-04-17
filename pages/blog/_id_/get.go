@@ -59,7 +59,7 @@ var _ = Css(`
 
 	.md-container .title-container h2 {
 		color: var(--yellow-dark);
-		font-size: var(--f-large);
+		font-size: 1.20rem;
 		font-weight: 500;
 		margin-top: 20px;
 		margin-bottom: 20px;
@@ -67,7 +67,7 @@ var _ = Css(`
 
 	.md-container .title-container h3 {
 		color: var(--yellow-dark);
-		font-size: var(--f-large);
+		font-size: 1.20rem;
 		font-weight: 500;
 		margin: 0;
 	}
@@ -76,6 +76,11 @@ var _ = Css(`
 		display: flex;
 		flex: 1;
 		justify-content: flex-start;
+	}
+
+	.md-container .tags-container {
+		margin-top: var(--space-4);
+		margin-bottom: var(--space-4);
 	}
 
 	@media (min-width: 640px) {
@@ -91,6 +96,11 @@ var _ = Css(`
 			flex-direction: row;
 			justify-content: flex-end;
 			margin-right: var(--space-10);
+		}
+
+		.md-container .tags-container {
+			margin-top: var(--space-1);
+			margin-bottom: var(--space-1);
 		}
 	}
 `)
@@ -159,6 +169,12 @@ func GET(c context.Context, id string) (HtmlContent, int, error) {
 									<h3>{{ date }}</h3>
 								</div>
 							</div>
+							<div class="tags-container">
+								{{#each tags as |tag|}}
+									{{#Tag text=tag}}
+									{{/Tag}}
+								{{/each}}
+							</div>
 							{{ md }}
 						</div>
 					{{/Layout}}
@@ -172,10 +188,9 @@ func GET(c context.Context, id string) (HtmlContent, int, error) {
 				Prop("keywords", strings.Join(keywords, ",")).
 				Prop("md", template.HTML(buf.String())).
 				Prop("url", utils.GetUrl(c)).
+				Prop("tags", tags).
 				Render()
 		}
 	}
 	return not_found_404.GET(c)
 }
-
-// TODO: add tags
