@@ -25,26 +25,6 @@ var _ = Css(`
 		width: 100%;
 	}
 
-	.md-container h1 {
-		color: var(--blue);
-		margin: 0;
-	}
-
-	.md-container h2 {
-		color: var(--blue-light);
-		font-size: var(--f-large);
-		font-weight: 500;
-		margin-top: 20px;
-		margin-bottom: 20px;
-	}
-
-	.md-container h3 {
-		color: var(--blue-light);
-		font-size: var(--f-large);
-		font-weight: 500;
-		margin: 0;
-	}
-
 	.md-container pre {
 		max-width: 64rem;
 		font-family: monospace;
@@ -56,6 +36,10 @@ var _ = Css(`
 		overflow-x: auto;
 	}
 
+	.md-container img {
+		width: 100%;
+	}
+
 	.md-container p {
 		line-height: 28px;
 	}
@@ -63,14 +47,51 @@ var _ = Css(`
 	.md-container .title-container {
 		display: flex;
 		flex: 1;
+		flex-direction: column;
 		font-family: serif;
+	}
+
+	.md-container .title-container h1 {
+		color: var(--black-light);
+		margin: 0;
+		line-height: 3rem;
+	}
+
+	.md-container .title-container h2 {
+		color: var(--yellow-dark);
+		font-size: var(--f-large);
+		font-weight: 500;
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+
+	.md-container .title-container h3 {
+		color: var(--yellow-dark);
+		font-size: var(--f-large);
+		font-weight: 500;
+		margin: 0;
 	}
 
 	.md-container .title-container .date {
 		display: flex;
 		flex: 1;
-		justify-content: flex-end;
-		margin-right: var(--space-10);
+		justify-content: flex-start;
+	}
+
+	@media (min-width: 640px) {
+		.md-container img {
+			width: auto;
+		}
+
+		.md-container .title-container {
+			flex-direction: row;
+		}
+
+		.md-container .title-container .date {
+			flex-direction: row;
+			justify-content: flex-end;
+			margin-right: var(--space-10);
+		}
 	}
 `)
 
@@ -114,9 +135,9 @@ func GET(c context.Context, id string) (HtmlContent, int, error) {
 				return HtmlErr(500, err)
 			}
 			metaData := meta.Get(context)
-			description := metaData["description"]
-			image := metaData["image"]
-			date := metaData["date"]
+			description := metaData["description"].(string)
+			image := metaData["image"].(string)
+			date := metaData["date"].(string)
 			tags := metaData["tags"].([]interface{})
 			keywords := []string{}
 			keywords = append(keywords, "pyros.sh", "pyrossh", "blog post")
@@ -146,7 +167,7 @@ func GET(c context.Context, id string) (HtmlContent, int, error) {
 			`).
 				Prop("title", title).
 				Prop("description", description).
-				Prop("image", image).
+				Prop("image", utils.GetImageUrl(image)).
 				Prop("date", date).
 				Prop("keywords", strings.Join(keywords, ",")).
 				Prop("md", template.HTML(buf.String())).
@@ -156,3 +177,5 @@ func GET(c context.Context, id string) (HtmlContent, int, error) {
 	}
 	return not_found_404.GET(c)
 }
+
+// TODO: add tags

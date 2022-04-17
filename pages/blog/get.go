@@ -11,6 +11,13 @@ import (
 	"pyros.sh/utils"
 )
 
+var _ = Css(`
+	.blog-link {
+		color: var(--black-light);
+		font-size: var(--f-xlarge);
+	}
+`)
+
 type Post struct {
 	ID    string `json:"id"`
 	Title string `json:"title"`
@@ -46,7 +53,7 @@ func GET(c context.Context) (HtmlContent, int, error) {
 								<div class="flex-1">
 									<div>
 										▪
-										<a class="ml-2 border-b border-black" href="/blog/{{ post.ID }}"> {{ post.Title }} </a>
+										<a class="blog-link ml-2 border-b border-black" href="/blog/{{ post.ID }}"> {{ post.Title }} </a>
 									</div>
 								</div>
 								<div class="">{{ post.Date }}</div>

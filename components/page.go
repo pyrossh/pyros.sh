@@ -202,7 +202,9 @@ var _ = Css(`
 
 	:root {
 		--black: #1a1a1a;
+		--black-light: #313a3d;
 		--yellow: #f1fa8c;
+		--yellow-dark: #af9301;
 		--blue: #0645ad;
 		--blue-light: #0e81c7;
 		--slider-bg: #f0ede2;
@@ -212,6 +214,7 @@ var _ = Css(`
 		--space-10: 2.5rem;
 		--f-normal: 1rem;
 		--f-large: 1.125rem;
+		--f-xlarge: 1.25rem;
 		--5xl: 64rem;
 	}
 
