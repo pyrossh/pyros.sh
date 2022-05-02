@@ -28,8 +28,8 @@ var slides = []*components.Slide{
 	{
 		Title:       "Pine",
 		Link:        "https://github.com/pyros2097/pine",
-		SubTitle:    "A programming language with a syntax largely inspired by nim but with the simplicity of go. It has jsx support in built by default.",
-		Description: "first class functions clean syntax basics: int, float, bool, byte, enum references: string, array, map, nil, error functions: extern, proc, method, test conditions: if, elif, else, match, break, continue loops: for inbuilt: echo, assert",
+		SubTitle:    "A programming language with a syntax largely inspired by pyret but with the simplicity of go.",
+		Description: "It has support first class functions and has a clean syntax and can call C library functions directly. Pine programs can be compiled to AMD64 and ARM64 and this is done using QBE a small and fast compiler backend.",
 		ImgSrc:      gromer.GetAssetUrl(assets.FS, "images/pine.png"),
 	},
 	{
