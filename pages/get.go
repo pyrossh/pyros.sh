@@ -41,12 +41,47 @@ var slides = []*components.Slide{
 	},
 }
 
+var _ = Css(`
+	.home-container li {
+		list-style-type: disc;
+	}
+
+	.icon-chat:before {
+		content: '\e800';
+	}
+
+	.icon-sitemap:before {
+    content: '\f0e8';
+}
+
+		[class^="icon-"]:before, [class*=" icon-"]:before {
+			font-family: "fa-elv-sh";
+			font-style: normal;
+			font-weight: normal;
+			speak: never;
+			display: inline-block;
+			text-decoration: inherit;
+			width: 1em;
+			margin-right: 0.2em;
+			text-align: center;
+			/* opacity: .8; */
+			font-variant: normal;
+			text-transform: none;
+			line-height: 1em;
+			margin-left: 0.2em;
+			/* font-size: 120%; */
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			/* text-shadow: 1px 1px 1px rgb(127 127 127 / 30%); */
+	}
+`)
+
 func GET(c context.Context) (HtmlContent, int, error) {
 	return Html(`
 		{{#Page url=url title="pyros.sh" description="Hi there, I'm Peter John, a fullstack developer from Bangalore, India." keywords="peter john,pyros.sh,pyrossh,full stack developer,bangalore,india"}}
 			{{#Header}}{{/Header}}
 			{{#Layout}}
-				<div>
+				<div class="home-container">
 					<div>
 						Hi there, I'm <strong>Peter John</strong>, a fullstack developer from Bangalore, India. I love writing code and I am lucky enough to do this as my
 						job. I currently work for Equal Experts. I have a strong passion for golang but I also work with react and nodejs.
@@ -62,7 +97,7 @@ func GET(c context.Context) (HtmlContent, int, error) {
 							<div>
 								<div class="text-2xl font-bold mt-6"><i class="icon-sitemap"></i>Interests</div>
 								<div class="mt-6">These are some of the stuff I work on</div>
-								<ul class="ml-6 list-disc grid grid-cols-3 gap-2 mt-6">
+								<ul class="ml-6 grid grid-cols-3 gap-2 mt-6">
 									<li>HTML</li>
 									<li>Javascript</li>
 									<li>CSS</li>
@@ -82,7 +117,7 @@ func GET(c context.Context) (HtmlContent, int, error) {
 							<div>
 								<div class="text-2xl font-bold mt-6"><i class="icon-chat"></i> Contact</div>
 								<div class="mt-6">You can contact me through any of these methods</div>
-								<ul class="mt-6 ml-6 list-disc text-lg grid grid-cols-1 gap-2">
+								<ul class="mt-6 ml-6 text-lg grid grid-cols-1 gap-2">
 									<li>Email: <a class="ml-2" href="mailto:peter.john@pyros.sh">peter.john@pyros.sh</a></li>
 									<li>Github: <a class="ml-2" href="https://github.com/pyrossh">pyrossh</a></li>
 									<li>LinkedIn: <a class="ml-2" href="https://www.linkedin.com/in/peter-john-in">Peter John</a></li>

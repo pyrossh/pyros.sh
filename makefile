@@ -1,7 +1,6 @@
 setup:
 	go install github.com/mitranim/gow@latest
 	go install github.com/pyros2097/gromer/cmd/gromer@latest
-	npm i -g tailwindcss
 
 update:
 	gromer
@@ -19,4 +18,4 @@ docker-build:
 docker-run:
 	docker run -p 3000:3000 -e PORT=3000 pyros.sh:latest
 
-# TODO: Fix lighthouse perfs regarding images and caching styles.css
+# TODO: Fix lighthouse perfs regarding images

@@ -8,12 +8,19 @@ import (
 	"pyros.sh/utils"
 )
 
+var _ = Css(`
+	.ref-container li {
+		list-style-type: disc;
+		list-style-position: outside;
+	}
+`)
+
 func GET(c context.Context) (HtmlContent, int, error) {
 	return Html(`
 		{{#Page url=url title="Reference" description="Reference" keywords="pyros.sh,pyrossh,reference"}}
 			{{#Header}}{{/Header}}
 			{{#Layout}}
-				<div>
+				<div class="ref-container">
 					<div>
 						Programming is my passion. I've been coding from a very young age and still do so. I have created and contributed to many open source projects. My
 						main interest lies in frontend, backend, and devops. I build frameworks and automate common tasks to make it easier to develop applications. I do
@@ -29,17 +36,17 @@ func GET(c context.Context) (HtmlContent, int, error) {
 							</p>
 							<div>
 								These are the client projects I worked on,
-								<ul class="mt-2 ml-6 sm:ml-10 list-disc list-outside">
+								<ul class="mt-2 ml-6 sm:ml-10">
 									<li>
 										John Lewis
-										<ul class="mt-2 ml-6 sm:ml-10 list-disc list-outside">
+										<ul class="mt-2 ml-6 sm:ml-10">
 											<li>Built the new Product Description Page (PDP) for Simple Carpets using JLDP blueprint template (nextjs) in team-home-interiors</li>
 											<li>Helped build, improve, and run AB experiments in the customer services and my orders pages in team-selfserve</li>
 										</ul>
 									</li>
 									<li>
 										iOWNA
-										<ul class="mt-2 ml-6 sm:ml-10 list-disc list-outside">
+										<ul class="mt-2 ml-6 sm:ml-10">
 											<li>Built a content editor for curators to create content on our platform</li>
 											<li>Built the iOWNA crossplatform app in react-native that works in android, ios, web. One codebase</li>
 											<li>Implemented admin specific functionalities in the web app</li>
@@ -50,7 +57,7 @@ func GET(c context.Context) (HtmlContent, int, error) {
 									</li>
 									<li>
 										Zeta
-										<ul class="mt-2 ml-6 sm:ml-10 list-disc list-outside">
+										<ul class="mt-2 ml-6 sm:ml-10">
 											<li>Added multiple download formats (pdf,html,xlsx) for reports in the Reporting Center</li>
 											<li>Created a Groovy Script to automate creating ACL's in sandbox authorization framework</li>
 											<li>Integrated Camunda Workflow Engine into Zeta services in Operations Center</li>
@@ -60,7 +67,7 @@ func GET(c context.Context) (HtmlContent, int, error) {
 									</li>
 									<li>
 										Lifebox
-										<ul class="mt-2 ml-6 sm:ml-10 list-disc list-outside">
+										<ul class="mt-2 ml-6 sm:ml-10">
 											<li>Added search functionality to the hospital procedure codes</li>
 											<li>Converted the Health Questionnaire from json to native go code making it easier to make changes to it</li>
 											<li>Integrated with SAP using HL7 message format to create patients, episodes, schedule/cancel procedures</li>
@@ -79,7 +86,7 @@ func GET(c context.Context) (HtmlContent, int, error) {
 								grow! You’ll never have to spend time syncing information between different systems. Save and record receipts &amp; spends with a single tap,
 								automatically categorise transactions for book-keeping and easily share information with your accountant.
 							</p>
-							<ul class="mt-2 ml-6 sm:ml-10 list-disc list-outside">
+							<ul class="mt-2 ml-6 sm:ml-10">
 								<li>Implemented new features and fixed bugz on the numberz android app</li>
 								<li>Integrated numberz with Tally ERP</li>
 								<li>Implemented CI and Devops within out system to ease our deployment process using docker and docker-compose</li>
@@ -105,7 +112,7 @@ func GET(c context.Context) (HtmlContent, int, error) {
 								to convert a gamified system's design into a fully functional web-application complete with teams, real-time notifications, leaderboards and
 								many more features. Made Critical decisions on what tech stack to switch to for our gamification product Catalyst.
 							</p>
-							<ul class="mt-2 ml-6 sm:ml-10 list-disc list-outside">
+							<ul class="mt-2 ml-6 sm:ml-10">
 								<li>Built the Playlyfe Hybrid Mobile app using Phonegap for Android and iOS</li>
 								<li>Built the leaderboard system using Mongodb, Redis and Couchbase as the datastore</li>
 								<li>Migration of data from v1 to v2 of the API</li>

@@ -10,7 +10,7 @@ var _ = Css(`
 	main {
 		width: 100%;
 		height: 100%;
-		font-family: serif;
+		
 	}
 
 	main > div {
@@ -28,8 +28,6 @@ var _ = Css(`
 		flex-direction: row;
 		align-items: center;
 		max-width: var(--5xl);
-		font-size: 1.125rem;
-		line-height: 1.75rem;
 		padding: var(--space-2);
 		margin-top: var(--space-4);
 	}
