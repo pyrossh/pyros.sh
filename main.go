@@ -2,8 +2,6 @@
 package main
 
 import (
-	"os"
-
 	"github.com/gorilla/mux"
 	"github.com/pyros2097/gromer"
 	"github.com/rs/zerolog/log"
@@ -30,7 +28,6 @@ func init() {
 }
 
 func main() {
-	port := os.Getenv("PORT")
 	baseRouter := mux.NewRouter()
 	baseRouter.Use(gromer.LogMiddleware)
 	
@@ -55,9 +52,9 @@ func main() {
 	
 	
 	
-	log.Info().Msg("http server listening on http://localhost:"+port)
+	log.Info().Msg("http server listening on http://localhost:3000")
 	srv := server.New(baseRouter, nil)
-	if err := srv.ListenAndServe(":"+port); err != nil {
+	if err := srv.ListenAndServe(":3000"); err != nil {
 		log.Fatal().Stack().Err(err).Msg("failed to listen")
 	}
 }
