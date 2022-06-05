@@ -5,17 +5,13 @@ setup:
 update:
 	gromer
 
-run: export PORT=3000
-run:
+dev:
 	gow run main.go
 
-css:
-	tailwindcss -i ./assets/css/config.css -o ./assets/css/tw.css --watch
+build:
+	podman build -t pyros.sh:latest .
 
-docker-build:
-	docker build -t pyros.sh:latest .
-
-docker-run:
-	docker run -p 3000:3000 -e PORT=3000 pyros.sh:latest
+run:
+	podman run -p 3000:3000 pyros.sh:latest
 
 # TODO: Fix lighthouse perfs regarding images

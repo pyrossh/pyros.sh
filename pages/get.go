@@ -52,7 +52,7 @@ var _ = Css(`
 
 	.icon-sitemap:before {
     content: '\f0e8';
-}
+	}
 
 		[class^="icon-"]:before, [class*=" icon-"]:before {
 			font-family: "fa-elv-sh";
