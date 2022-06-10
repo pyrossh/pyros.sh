@@ -19,6 +19,7 @@ import (
 )
 
 func init() {
+	gromer.RegisterComponent(components.RefHeader)
 	gromer.RegisterComponent(components.Header)
 	gromer.RegisterComponent(components.Layout)
 	gromer.RegisterComponent(components.Page)

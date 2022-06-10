@@ -478,6 +478,21 @@ var _ = Css(`
 			line-height: 1.75rem
 		}
 	}
+
+	@page {
+  	size: 8.5in 11in; 
+    margin: 0.5in;
+
+				/* size: A4;
+		margin: 48px 24px; */
+	}
+
+	@media print {
+		body {
+			font-size: 16px;
+			line-height: 24px;
+		}
+	}
 `)
 
 type PageProps struct {
@@ -520,5 +535,6 @@ func Page(props PageProps) *Template {
 	`).Props(
 		"iconUrl", gromer.GetAssetUrl(assets.FS, "images/icon.png"),
 		"stylesUrl", gromer.GetStylesUrl(),
+		"picoCssUrl", gromer.GetAssetUrl(assets.FS, "css/pico.min.css"),
 	)
 }
