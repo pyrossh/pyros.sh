@@ -535,6 +535,5 @@ func Page(props PageProps) *Template {
 	`).Props(
 		"iconUrl", gromer.GetAssetUrl(assets.FS, "images/icon.png"),
 		"stylesUrl", gromer.GetStylesUrl(),
-		"picoCssUrl", gromer.GetAssetUrl(assets.FS, "css/pico.min.css"),
 	)
 }
